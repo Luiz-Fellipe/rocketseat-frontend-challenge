@@ -33,6 +33,8 @@ declare module "styled-components" {
       background: string;
     };
     fontSizes: {
+      /**  0.625rem */
+      "10": string;
       /** 0.875rem */
       "14": string;
       /** 1rem */

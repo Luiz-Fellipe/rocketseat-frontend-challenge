@@ -18,6 +18,7 @@ export const theme: DefaultTheme = {
     background: "#F5F8FA",
   },
   fontSizes: {
+    "10": "0.625rem",
     "14": "0.875rem",
     "16": "1rem",
     "20": "1.25rem",
