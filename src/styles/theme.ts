@@ -4,8 +4,8 @@ export const theme: DefaultTheme = {
   colors: {
     blue: "#115D8C",
     orange: "#F25D27",
-    title: "#123952",
-    text: "#617480",
+    title: "#41414D",
+    text: "#737380",
     complement: "#A0ACB3",
     shape01: "#FFFFFF",
     shape02: "#DCE2E6",
@@ -19,6 +19,7 @@ export const theme: DefaultTheme = {
   },
   fontSizes: {
     "10": "0.625rem",
+    "12": "0.75rem",
     "14": "0.875rem",
     "16": "1rem",
     "20": "1.25rem",

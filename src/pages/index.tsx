@@ -1,14 +1,24 @@
 import type { NextPage } from "next";
-import { ProductCard } from "../components/ProductCard";
-
 //components
 import { ProductCategory } from "../components/ProductCategory";
-import { HomeWrapper, ProductsContainer } from "../styles/pages/home";
+import { OrderByDropdown } from "../components/OrderByDropdown";
+import { ProductCard } from "../components/ProductCard";
+
+//Styles
+import {
+  HomeWrapper,
+  HomeHeader,
+  ProductsContainer,
+} from "../styles/pages/home";
 
 const Home: NextPage = () => {
   return (
     <HomeWrapper>
-      <ProductCategory />
+      <HomeHeader>
+        <ProductCategory />
+        <OrderByDropdown />
+      </HomeHeader>
+
       <ProductsContainer>
         <ProductCard />
         <ProductCard />

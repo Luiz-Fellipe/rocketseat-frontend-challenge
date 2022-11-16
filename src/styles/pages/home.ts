@@ -9,7 +9,7 @@ export const HomeWrapper = styled.main`
 
   padding: 0 20px;
 
-  @media ${({ theme }) => theme.device.sm} {
+  @media (min-width: 1120px) {
     padding: 0;
   }
 `;
@@ -24,5 +24,17 @@ export const ProductsContainer = styled.div`
 
   @media ${({ theme }) => theme.device.sm} {
     justify-content: flex-start;
+  }
+`;
+
+export const HomeHeader = styled.div`
+  display: flex;
+
+  flex-direction: column;
+
+  @media ${({ theme }) => theme.device.sm} {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 `;

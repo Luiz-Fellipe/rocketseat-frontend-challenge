@@ -7,9 +7,9 @@ declare module "styled-components" {
       blue: string;
       /** #F25D27 */
       orange: string;
-      /** #123952 */
+      /** #41414D */
       title: string;
-      /** #617480 */
+      /** #737380 */
       text: string;
       /** #A0ACB3 */
       complement: string;
@@ -35,6 +35,8 @@ declare module "styled-components" {
     fontSizes: {
       /**  0.625rem */
       "10": string;
+      /**  0.75rem */
+      "12": string;
       /** 0.875rem */
       "14": string;
       /** 1rem */

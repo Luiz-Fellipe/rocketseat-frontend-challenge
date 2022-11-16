@@ -7,10 +7,7 @@ interface ICategoryItemProps {
 export const ProductCategoryWrapper = styled.div`
   display: flex;
   gap: 40px;
-
-  width: 100%;
-
-  margin: 0 auto;
+  justify-content: space-between;
 `;
 
 export const CategoryItem = styled.button<ICategoryItemProps>`
@@ -19,8 +16,9 @@ export const CategoryItem = styled.button<ICategoryItemProps>`
   text-transform: uppercase;
   cursor: pointer;
 
-  font-size: ${({ theme }) => theme.fontSizes["14"]};
-  color: #737380;
+  /* font-size: ${({ theme }) => theme.fontSizes["12"]}; */
+  font-size: 13px;
+  color: ${({ theme }) => theme.colors.text};
 
   padding-bottom: 4px;
 

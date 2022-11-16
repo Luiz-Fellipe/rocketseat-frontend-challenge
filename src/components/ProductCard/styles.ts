@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ProductCardWrapper = styled.div`
-  width: 256px;
+  width: 300px;
 
   display: flex;
   flex-direction: column;
@@ -21,5 +21,9 @@ export const ProductCardWrapper = styled.div`
     border-bottom: 0.5px solid ${({ theme }) => theme.colors.shape02};
 
     font-weight: 300;
+  }
+
+  @media ${({ theme }) => theme.device.sm} {
+    width: 256px;
   }
 `;
