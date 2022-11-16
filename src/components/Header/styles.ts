@@ -10,6 +10,8 @@ export const HeaderWrapper = styled.header`
   @media ${({ theme }) => theme.device.sm} {
     height: 80px;
   }
+
+  margin-bottom: ${({ theme }) => theme.space["32"]};
 `;
 
 export const HeaderContent = styled.div`

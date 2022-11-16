@@ -1,12 +1,23 @@
 import type { NextPage } from "next";
-import styled from "styled-components";
+import { ProductCard } from "../components/ProductCard";
 
-const StyledTest = styled.h1`
-  color: ${({ theme }) => theme.colors.background};
-`;
+//components
+import { ProductCategory } from "../components/ProductCategory";
+import { HomeWrapper, ProductsContainer } from "../styles/pages/home";
 
 const Home: NextPage = () => {
-  return <StyledTest>hello world</StyledTest>;
+  return (
+    <HomeWrapper>
+      <ProductCategory />
+      <ProductsContainer>
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+      </ProductsContainer>
+    </HomeWrapper>
+  );
 };
 
 export default Home;
