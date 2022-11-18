@@ -2,7 +2,7 @@ import { Root } from "@radix-ui/react-dropdown-menu";
 import Image from "next/image";
 
 //assets
-import IconArrowSvg from "../../assets/iconArrow.svg";
+import IconArrowSvg from "../../assets/iconArrowDown.svg";
 
 //Styles
 import {

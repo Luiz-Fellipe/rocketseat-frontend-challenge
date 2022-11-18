@@ -20,8 +20,6 @@ export const ProductsContainer = styled.div`
   justify-content: center;
   gap: ${({ theme }) => theme.space["24"]} ${({ theme }) => theme.space["32"]};
 
-  margin-top: ${({ theme }) => theme.space["32"]};
-
   @media ${({ theme }) => theme.device.sm} {
     justify-content: flex-start;
   }

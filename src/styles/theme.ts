@@ -9,6 +9,7 @@ export const theme: DefaultTheme = {
     complement: "#A0ACB3",
     shape01: "#FFFFFF",
     shape02: "#DCE2E6",
+    shape03: "#E9E9F0",
     red: "#DE3838",
     green: "#51B853",
     greenLow: "#DCF5DD",

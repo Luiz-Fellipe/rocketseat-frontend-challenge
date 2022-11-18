@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import { ProductCategory } from "../components/ProductCategory";
 import { OrderByDropdown } from "../components/OrderByDropdown";
 import { ProductCard } from "../components/ProductCard";
+import { Pagination } from "../components/Pagination";
 
 //Styles
 import {
@@ -18,6 +19,7 @@ const Home: NextPage = () => {
         <ProductCategory />
         <OrderByDropdown />
       </HomeHeader>
+      <Pagination totalPages={5} />
 
       <ProductsContainer>
         <ProductCard />
@@ -26,6 +28,8 @@ const Home: NextPage = () => {
         <ProductCard />
         <ProductCard />
       </ProductsContainer>
+
+      <Pagination totalPages={5} />
     </HomeWrapper>
   );
 };

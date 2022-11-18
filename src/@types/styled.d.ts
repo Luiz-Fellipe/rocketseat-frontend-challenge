@@ -17,6 +17,8 @@ declare module "styled-components" {
       shape01: string;
       /** #DCE2E6 */
       shape02: string;
+      /** #E9E9F0 */
+      shape03: string;
       /** #DE3838 */
       red: string;
       /** #51B853 */
