@@ -11,6 +11,8 @@ declare module "styled-components" {
       title: string;
       /** #737380 */
       text: string;
+      /** #617480 */
+      text02: string;
       /** #A0ACB3 */
       complement: string;
       /** #FFFFFF */
@@ -43,8 +45,14 @@ declare module "styled-components" {
       "14": string;
       /** 1rem */
       "16": string;
+      /** 1.125rem */
+      "18": string;
       /** 1.25rem */
       "20": string;
+      /** 1.5rem */
+      "24": string;
+      /** 2rem */
+      "32": string;
     };
 
     space: {
