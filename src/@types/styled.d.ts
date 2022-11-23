@@ -56,19 +56,19 @@ declare module "styled-components" {
     };
 
     space: {
-      /** 0.25rem */
+      /** 4px */
       "4": string;
-      /** 0.50rem */
+      /** 8px */
       "8": string;
-      /** 0.625rem */
+      /** 10px */
       "10": string;
-      /** 0.75rem */
+      /** 12px */
       "12": string;
-      /** 1rem */
+      /** 16px */
       "16": string;
-      /** 1.5rem */
+      /** 24px */
       "24": string;
-      /** 2rem */
+      /** 32px */
       "32": string;
     };
 

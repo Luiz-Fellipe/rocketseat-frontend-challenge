@@ -16,6 +16,8 @@ export const ProductContent = styled.div`
   display: flex;
   flex-direction: column;
 
+  margin-top: ${({ theme }) => theme.space["24"]};
+
   gap: ${({ theme }) => theme.space["16"]};
 
   @media ${({ theme }) => theme.device.sm} {

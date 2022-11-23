@@ -10,6 +10,4 @@ export const ButtonBack = styled.button`
 
   font-weight: 500;
   color: ${({ theme }) => theme.colors.text02};
-
-  margin-bottom: ${({ theme }) => theme.space["24"]};
 `;
