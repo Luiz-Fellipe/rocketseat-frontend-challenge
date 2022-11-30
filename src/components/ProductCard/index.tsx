@@ -1,12 +1,20 @@
-//styles
 import Image from "next/image";
+
+//Types
+import { IProduct } from "../../@types/products";
+
+//styles
 import { ProductCardWrapper } from "./styles";
 
-export function ProductCard() {
+interface IProductCardProps {
+  product: Pick<IProduct, "id" | "name" | "price_in_cents" | "image_url">;
+}
+
+export function ProductCard({ product }: IProductCardProps) {
   return (
     <ProductCardWrapper role="button">
       <Image
-        src="https://storage.googleapis.com/xesque-dev/challenge-images/camiseta-04.jpg"
+        src={product.image_url}
         width={640}
         height={580}
         objectFit="cover"
@@ -14,9 +22,9 @@ export function ProductCard() {
           borderTopLeftRadius: "8px",
           borderTopRightRadius: "8px",
         }}
-        alt="imagem do produto"
+        alt={product.name}
       />
-      <span>Caneca de cerâmica rústica</span>
+      <span>{product.name}</span>
 
       <strong>R$ 70,00</strong>
     </ProductCardWrapper>

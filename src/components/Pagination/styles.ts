@@ -35,6 +35,8 @@ export const ButtonPage = styled.button<IButtonPageProps>`
   color: ${({ theme }) => theme.colors.text};
   border-radius: ${({ theme }) => theme.radii["8"]};
 
+  transition: all 0.2s ease-in-out;
+
   ${({ isActive }) =>
     isActive &&
     css`
@@ -43,4 +45,9 @@ export const ButtonPage = styled.button<IButtonPageProps>`
       color: ${({ theme }) => theme.colors.orangeLow};
       font-weight: 600;
     `}
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 `;
