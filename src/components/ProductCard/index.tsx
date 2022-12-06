@@ -3,6 +3,9 @@ import Image from "next/image";
 //Types
 import { IProduct } from "../../@types/products";
 
+//Utils
+import { formatMoney } from "../../utils/formatMoney";
+
 //styles
 import { ProductCardWrapper } from "./styles";
 
@@ -26,7 +29,7 @@ export function ProductCard({ product }: IProductCardProps) {
       />
       <span>{product.name}</span>
 
-      <strong>R$ 70,00</strong>
+      <strong>{formatMoney(product.price_in_cents / 100)}</strong>
     </ProductCardWrapper>
   );
 }

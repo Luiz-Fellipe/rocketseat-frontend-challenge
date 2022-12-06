@@ -28,7 +28,7 @@ interface IHomeProps {
 const PRODUCTS_PER_PAGE = 12;
 
 export default function Home({ products, totalProducts }: IHomeProps) {
-  const totalPages = totalProducts / PRODUCTS_PER_PAGE;
+  const totalPages = Math.ceil(totalProducts / PRODUCTS_PER_PAGE);
 
   return (
     <HomeWrapper>
@@ -57,19 +57,21 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       $page: Int
       $sortOrder: String
       $sortField: String
+      $filter: ProductFilter
     ) {
       allProducts(
         perPage: $perPage
         page: $page
         sortOrder: $sortOrder
         sortField: $sortField
+        filter: $filter
       ) {
         id
         name
         price_in_cents
         image_url
       }
-      _allProductsMeta {
+      _allProductsMeta(perPage: $perPage, page: $page, filter: $filter) {
         count
       }
     }
@@ -84,6 +86,9 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       page: page,
       sortField: "created_at",
       sortOrder: "asc",
+      filter: {
+        q: query.search,
+      },
     },
   });
 

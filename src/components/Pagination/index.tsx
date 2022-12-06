@@ -23,7 +23,7 @@ export function Pagination({ totalPages }: IPaginationProps) {
     router.push(
       {
         pathname: "/",
-        query: page ? { page } : {},
+        query: page ? { ...router.query, page } : {},
       },
       undefined,
       { scroll: false }
