@@ -2,7 +2,7 @@ import type { GetServerSideProps, NextPage } from "next";
 
 //components
 import { ProductCategory } from "../components/ProductCategory";
-import { OrderByDropdown } from "../components/OrderByDropdown";
+import { IOrderTypes, OrderByDropdown } from "../components/OrderByDropdown";
 import { ProductCard } from "../components/ProductCard";
 import { Pagination } from "../components/Pagination";
 
@@ -79,13 +79,33 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   const page = Number(query.page) - 1 || 0;
 
+  const orderBy = query?.orderBy as IOrderTypes;
+  const orderFilter: Record<IOrderTypes, { order: string; field: string }> = {
+    "best-sellers": {
+      field: "sales",
+      order: "asc",
+    },
+    "new-products": {
+      field: "created_at",
+      order: "asc",
+    },
+    "price-max-min": {
+      field: "price_in_cents",
+      order: "desc",
+    },
+    "price-min-max": {
+      field: "price_in_cents",
+      order: "asc",
+    },
+  };
+
   const { data } = await client.query({
     query: GET_ALL_PRODUCTS,
     variables: {
       perPage: PRODUCTS_PER_PAGE,
       page: page,
-      sortField: "created_at",
-      sortOrder: "asc",
+      sortField: orderFilter[orderBy]?.field || "created_at",
+      sortOrder: orderFilter[orderBy]?.order || "asc",
       filter: {
         q: query.search,
       },

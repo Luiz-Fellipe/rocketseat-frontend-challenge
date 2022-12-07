@@ -22,7 +22,7 @@ export function Header() {
       router.push(
         {
           pathname: `/`,
-          query: search ? { search, page: 1 } : {},
+          query: search ? { ...router.query, search, page: 1 } : {},
         },
         undefined
       );
@@ -37,6 +37,7 @@ export function Header() {
           <SearchInput>
             <input
               onKeyUp={handleKeyUp}
+              defaultValue={router.query?.search}
               type="text"
               placeholder="Procurando por algo específico?"
             />

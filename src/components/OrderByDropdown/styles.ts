@@ -39,4 +39,10 @@ export const DropdownMenuItem = styled(Item)`
   cursor: pointer;
   font-size: ${({ theme }) => theme.fontSizes["14"]};
   color: ${({ theme }) => theme.colors.text};
+
+  transition: color 0.2s ease-in-out;
+
+  &[data-highlighted] {
+    color: ${({ theme }) => theme.colors.orange};
+  }
 `;
