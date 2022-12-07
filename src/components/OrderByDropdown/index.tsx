@@ -25,17 +25,19 @@ enum IOrderTypes {
   "best-sellers" = "Mais vendidos",
 }
 
+export type IOrderTypesKeys = keyof typeof IOrderTypes;
+
 export function OrderByDropdown() {
   const router = useRouter();
 
-  const [value, setValue] = useState<keyof typeof IOrderTypes | null>(() => {
+  const [value, setValue] = useState<IOrderTypesKeys | null>(() => {
     if (router?.query?.orderBy) {
-      return router?.query?.orderBy as keyof typeof IOrderTypes;
+      return router?.query?.orderBy as IOrderTypesKeys;
     }
     return null;
   });
 
-  function handleSetOrderBy(option: keyof typeof IOrderTypes) {
+  function handleSetOrderBy(option: IOrderTypesKeys) {
     console.log("option", option, IOrderTypes[option]);
     router.push(
       {
@@ -57,7 +59,7 @@ export function OrderByDropdown() {
         {Object.entries(IOrderTypes)?.map(([key, value]) => (
           <DropdownMenuItem
             key={key}
-            onSelect={() => handleSetOrderBy(key as keyof typeof IOrderTypes)}
+            onSelect={() => handleSetOrderBy(key as IOrderTypesKeys)}
           >
             {value}
           </DropdownMenuItem>

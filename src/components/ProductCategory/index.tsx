@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
 //Assets
 import iconAll from "../../assets/iconAll.svg";
@@ -6,30 +8,45 @@ import iconAll from "../../assets/iconAll.svg";
 //Styles
 import { ProductCategoryWrapper, CategoryItem } from "./styles";
 
+enum ICategoryTypes {
+  "all" = "Todos os Produtos",
+  "t-shirts" = "Camisetas",
+  "mugs" = "Canecas",
+}
+
+type ICategoryTypesKeys = keyof typeof ICategoryTypes;
+
 export function ProductCategory() {
-  const categories = [
-    {
-      id: 1,
-      label: "Todos os Produtos",
-      value: null,
-    },
-    {
-      id: 3,
-      label: "Camisetas",
-      value: "t-shirts",
-    },
-    {
-      id: 2,
-      label: "Canecas",
-      value: "mugs",
-    },
-  ];
+  const router = useRouter();
+  const [activeCategory, setActiveCategory] = useState<ICategoryTypesKeys>(
+    () => {
+      if (router?.query?.category) {
+        return router?.query?.category as ICategoryTypesKeys;
+      }
+      return "all";
+    }
+  );
+
+  function handleSetCategory(value: ICategoryTypesKeys) {
+    router.push(
+      {
+        pathname: `/`,
+        query: { ...router.query, category: value, page: 1 },
+      },
+      undefined
+    );
+    setActiveCategory(value);
+  }
 
   return (
     <ProductCategoryWrapper>
-      {categories.map((category) => (
-        <CategoryItem isActive={category.value === "mugs"} key={category.id}>
-          {category.label}
+      {Object.entries(ICategoryTypes)?.map(([key, value]) => (
+        <CategoryItem
+          isActive={key === activeCategory}
+          key={key}
+          onClick={() => handleSetCategory(key as ICategoryTypesKeys)}
+        >
+          {value}
         </CategoryItem>
       ))}
     </ProductCategoryWrapper>
