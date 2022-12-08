@@ -8,6 +8,7 @@ import {
 } from "../components/OrderByDropdown";
 import { ProductCard } from "../components/ProductCard";
 import { Pagination } from "../components/Pagination";
+import { ResultsNotFound } from "../components/ResultsNotFound";
 
 //services
 import client from "../../apollo-client";
@@ -33,6 +34,8 @@ const PRODUCTS_PER_PAGE = 12;
 export default function Home({ products, totalProducts }: IHomeProps) {
   const totalPages = Math.ceil(totalProducts / PRODUCTS_PER_PAGE);
 
+  const hasProducts = products.length > 0;
+
   return (
     <HomeWrapper>
       <HomeHeader>
@@ -40,15 +43,19 @@ export default function Home({ products, totalProducts }: IHomeProps) {
         <OrderByDropdown />
       </HomeHeader>
 
-      <Pagination totalPages={totalPages} />
+      {hasProducts && <Pagination totalPages={totalPages} />}
 
       <ProductsContainer>
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
+        {hasProducts ? (
+          products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))
+        ) : (
+          <ResultsNotFound />
+        )}
       </ProductsContainer>
 
-      <Pagination totalPages={totalPages} />
+      {hasProducts && <Pagination totalPages={totalPages} />}
     </HomeWrapper>
   );
 }
