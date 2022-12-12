@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 //Types
 import { IProduct } from "../../@types/products";
@@ -14,8 +15,14 @@ interface IProductCardProps {
 }
 
 export function ProductCard({ product }: IProductCardProps) {
+  const router = useRouter();
+
+  function handleNavigateToProductDetail() {
+    router.push(`/product/${product.id}`);
+  }
+
   return (
-    <ProductCardWrapper role="button">
+    <ProductCardWrapper onClick={handleNavigateToProductDetail} role="button">
       <Image
         src={product.image_url}
         width={640}
