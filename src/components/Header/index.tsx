@@ -7,8 +7,16 @@ import logoSvg from "../../assets/logo.svg";
 import iconSearch from "../../assets/iconSearch.svg";
 import iconCart from "../../assets/iconCart.svg";
 
+//Context
+import { useCart } from "../../context/CartProvider";
+
 //Styles
-import { HeaderWrapper, HeaderContent, SearchInput } from "./styles";
+import {
+  HeaderWrapper,
+  HeaderContent,
+  SearchInput,
+  ButtonCart,
+} from "./styles";
 
 export function Header() {
   const router = useRouter();
@@ -29,6 +37,8 @@ export function Header() {
     }
   };
 
+  const { totalProducts } = useCart();
+
   return (
     <HeaderWrapper>
       <HeaderContent>
@@ -44,9 +54,12 @@ export function Header() {
             <Image src={iconSearch} alt="icone de pesquisa" />
           </SearchInput>
           <Link href="/cart">
-            <button aria-label=" ir para o carrinho">
+            <ButtonCart
+              aria-label=" ir para o carrinho"
+              data-total-products={totalProducts}
+            >
               <Image src={iconCart} alt="icone de carrinho" />
-            </button>
+            </ButtonCart>
           </Link>
         </div>
       </HeaderContent>

@@ -37,31 +37,6 @@ export const HeaderContent = styled.div`
     }
 
     > button {
-      position: relative;
-
-      background-color: transparent;
-      border: none;
-      cursor: pointer;
-
-      &::after {
-        content: "2";
-        position: absolute;
-        bottom: -1px;
-        right: -9px;
-
-        width: 17px;
-        height: 17px;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        font-size: ${({ theme }) => theme.fontSizes["10"]};
-        color: ${({ theme }) => theme.colors.shape01};
-
-        border-radius: 100%;
-        background-color: ${({ theme }) => theme.colors.red};
-      }
     }
   }
 
@@ -92,5 +67,33 @@ export const SearchInput = styled.div`
     height: 100%;
 
     font-size: ${({ theme }) => theme.fontSizes["14"]};
+  }
+`;
+
+export const ButtonCart = styled.button`
+  position: relative;
+
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  &::after {
+    content: attr(data-total-products);
+    position: absolute;
+    bottom: -1px;
+    right: -9px;
+
+    width: 17px;
+    height: 17px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: ${({ theme }) => theme.fontSizes["10"]};
+    color: ${({ theme }) => theme.colors.shape01};
+
+    border-radius: 100%;
+    background-color: ${({ theme }) => theme.colors.red};
   }
 `;

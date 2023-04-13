@@ -2,6 +2,7 @@ import Image from "next/image";
 
 //Components
 import { ButtonBackToHome } from "../../components/ButtonBackToHome";
+import { Select } from "../../components/Select";
 
 //Assets
 import IconDelete from "../../assets/iconDelete.svg";
@@ -22,7 +23,6 @@ import {
   OrderSumaryLinks,
   OrderSummary,
 } from "../../styles/pages/cart";
-import { Select } from "../../components/Select";
 
 export default function Cart() {
   return (

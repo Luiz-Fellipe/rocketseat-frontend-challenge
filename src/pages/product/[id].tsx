@@ -15,6 +15,9 @@ import { IProduct } from "../../@types/products";
 //utils
 import { formatMoney } from "../../utils/formatMoney";
 
+//Context
+import { useCart } from "../../context/CartProvider";
+
 //Styles
 import {
   ProductContent,
@@ -23,6 +26,8 @@ import {
 } from "../../styles/pages/product";
 
 export default function Product({ product }: { product: IProduct }) {
+  const { addProductToCart } = useCart();
+
   return (
     <ProductWrapper>
       <ButtonBackToHome />
@@ -48,7 +53,7 @@ export default function Product({ product }: { product: IProduct }) {
 
           <p>{product.description}</p>
 
-          <button>
+          <button onClick={() => addProductToCart(product.id)}>
             <Image src={IconCartWhite} alt="adicionar carrinho" />
             Adicionar ao carrinho
           </button>
