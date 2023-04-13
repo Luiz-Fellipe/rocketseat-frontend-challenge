@@ -1,4 +1,10 @@
-import { Root, Portal, Value, Group } from "@radix-ui/react-select";
+import {
+  Root,
+  Portal,
+  Value,
+  Group,
+  SelectProps,
+} from "@radix-ui/react-select";
 import Image from "next/image";
 
 //Assets
@@ -17,9 +23,12 @@ import {
   SelectScrollDownButton,
 } from "./styles";
 
-export function Select() {
+export function Select({
+  defaultValue,
+  onValueChange,
+}: Pick<SelectProps, "defaultValue" | "onValueChange">) {
   return (
-    <Root defaultValue="1">
+    <Root defaultValue={defaultValue} onValueChange={onValueChange}>
       <SelectTrigger>
         <Value />
         <SelectIcon>

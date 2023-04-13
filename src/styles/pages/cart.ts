@@ -207,6 +207,11 @@ export const OrderResume = styled.div`
     border-radius: ${({ theme }) => theme.radii["4"]};
 
     margin-top: 40px;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
   }
 `;
 

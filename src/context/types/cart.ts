@@ -1,12 +1,14 @@
 import { IProduct } from "../../@types/products";
 
-export type Product = {
-  id: IProduct["id"];
+export type Product = IProduct & {
   amount: number;
 };
 
 export interface ICartContextParams {
   productsInTheCart: Product[];
   totalProducts: number;
-  addProductToCart: (productId: Product["id"]) => void;
+  subTotalPrice: number;
+  addProductToCart: (product: IProduct) => void;
+  updateProductAmount: (productId: IProduct["id"], amount: number) => void;
+  removeProductToCart: (productId: IProduct["id"]) => void;
 }

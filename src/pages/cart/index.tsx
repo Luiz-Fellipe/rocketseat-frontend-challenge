@@ -7,6 +7,12 @@ import { Select } from "../../components/Select";
 //Assets
 import IconDelete from "../../assets/iconDelete.svg";
 
+//Hooks
+import { useCart } from "../../context/CartProvider";
+
+//Utils
+import { formatMoney } from "../../utils/formatMoney";
+
 //Styles
 import {
   CartContainer,
@@ -25,6 +31,14 @@ import {
 } from "../../styles/pages/cart";
 
 export default function Cart() {
+  const {
+    productsInTheCart,
+    totalProducts,
+    subTotalPrice,
+    removeProductToCart,
+    updateProductAmount,
+  } = useCart();
+
   return (
     <CartWrapper>
       <ButtonBackToHome />
@@ -34,37 +48,46 @@ export default function Cart() {
           <CartContentHeader>
             <h1>Seu Carrinho</h1>
             <span>
-              Total (3 produtos) <strong>R$161,00</strong>
+              Total ({totalProducts} produtos){" "}
+              <strong>{formatMoney(subTotalPrice)}</strong>
             </span>
           </CartContentHeader>
 
           <CartItemsList>
-            {Array.from({ length: 10 }, (v, k) => k).map((item) => (
-              <CartItem key={item}>
+            {productsInTheCart.map((product) => (
+              <CartItem key={product.id}>
                 <Image
-                  src="https://storage.googleapis.com/xesque-dev/challenge-images/camiseta-04.jpg"
-                  alt="camiseta nova"
+                  src={product.image_url}
+                  alt={product.name}
                   className="img-next-radius-8"
                   width={640}
                   height={580}
                 />
                 <ItemInfo>
                   <ItemInfoHeader>
-                    <h2>Caneca de cerâmica rústica</h2>
-                    <button aria-label="deltar o item do carrinho">
+                    <h2>{product.name}</h2>
+                    <button
+                      onClick={() => removeProductToCart(product.id)}
+                      aria-label="deletar o item do carrinho"
+                    >
                       <Image src={IconDelete} alt="imagem de uma lixeira" />
                     </button>
                   </ItemInfoHeader>
 
-                  <p>
-                    Aqui vem um texto descritivo do produto, esta caixa de texto
-                    servirá apenas de exemplo para que simule algum texto que
-                    venha a ser inserido nesse campo, descrevendo tal produto.
-                  </p>
+                  <p>{product.description}</p>
                   <ItemInfoFooter>
-                    <Select />
+                    <Select
+                      defaultValue={product.amount.toString()}
+                      onValueChange={(value) =>
+                        updateProductAmount(product.id, Number(value))
+                      }
+                    />
 
-                    <strong>R$ 40,00</strong>
+                    <strong>
+                      {formatMoney(
+                        (product.price_in_cents / 100) * product.amount
+                      )}
+                    </strong>
                   </ItemInfoFooter>
                 </ItemInfo>
               </CartItem>
@@ -76,20 +99,22 @@ export default function Cart() {
             <h2>Resumo do Pedido</h2>
             <OrderPrice>
               <span>Subtotal de produtos</span>
-              <span>R$ 161,00</span>
+              <span>{formatMoney(subTotalPrice)}</span>
             </OrderPrice>
             <OrderPrice>
               <span>Entrega</span>
-              <span>R$ 40,00</span>
+              <span>R$ 0,00</span>
             </OrderPrice>
             <hr />
 
             <OrderPrice>
               <strong>Total</strong>
-              <strong>R$ 201,00</strong>
+              <strong>{formatMoney(subTotalPrice)}</strong>
             </OrderPrice>
 
-            <button>Finalizar Compra</button>
+            <button disabled={productsInTheCart.length === 0}>
+              Finalizar Compra
+            </button>
           </OrderResume>
 
           <OrderSumaryLinks>

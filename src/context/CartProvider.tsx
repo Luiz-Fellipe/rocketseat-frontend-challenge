@@ -1,14 +1,21 @@
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useLayoutEffect,
+  useMemo,
+  useState,
+} from "react";
 
 //TYPES
 import { ICartContextParams, Product } from "./types/cart";
+import { IProduct } from "../@types/products";
 
 const CartContext = createContext({} as ICartContextParams);
 
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [productsInTheCart, setProductsInTheCart] = useState<Product[]>([]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const stored = localStorage.getItem("cappucino-cart");
 
     if (stored) {
@@ -17,19 +24,28 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   const totalProducts = useMemo(
-    () => productsInTheCart.length,
+    () =>
+      productsInTheCart.reduce((acc, product) => {
+        return acc + product.amount;
+      }, 0),
     [productsInTheCart]
   );
 
-  function addProductToCart(productId: Product["id"]) {
+  const subTotalPrice = useMemo(() => {
+    return productsInTheCart.reduce((acc, item) => {
+      return acc + (item.price_in_cents / 100) * item.amount;
+    }, 0);
+  }, [productsInTheCart]);
+
+  function addProductToCart(product: IProduct) {
     const productExistsInCart = productsInTheCart.find(
-      (p) => p.id === productId
+      (p) => p.id === product.id
     );
 
     if (productExistsInCart) {
       setProductsInTheCart((oldValue) => {
         const updatedProducts = oldValue.map((prod) => {
-          if (prod.id === productId) {
+          if (prod.id === product.id) {
             return {
               ...prod,
               amount: prod.amount + 1,
@@ -47,7 +63,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
         const updatedProducts = [
           ...oldValue,
           {
-            id: productId,
+            ...product,
             amount: 1,
           },
         ];
@@ -57,9 +73,42 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }
 
+  function updateProductAmount(productId: IProduct["id"], amount: number) {
+    setProductsInTheCart((oldValue) => {
+      const updatedProducts = oldValue.map((p) => {
+        if (p.id === productId) {
+          return {
+            ...p,
+            amount,
+          };
+        }
+        return p;
+      });
+
+      localStorage.setItem("cappucino-cart", JSON.stringify(updatedProducts));
+      return updatedProducts;
+    });
+  }
+
+  function removeProductToCart(productId: IProduct["id"]) {
+    setProductsInTheCart((oldValue) => {
+      const updatedProducts = oldValue.filter((p) => p.id !== productId);
+
+      localStorage.setItem("cappucino-cart", JSON.stringify(updatedProducts));
+      return updatedProducts;
+    });
+  }
+
   return (
     <CartContext.Provider
-      value={{ productsInTheCart, totalProducts, addProductToCart }}
+      value={{
+        productsInTheCart,
+        totalProducts,
+        subTotalPrice,
+        addProductToCart,
+        removeProductToCart,
+        updateProductAmount,
+      }}
     >
       {children}
     </CartContext.Provider>

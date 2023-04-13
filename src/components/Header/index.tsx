@@ -37,7 +37,7 @@ export function Header() {
     }
   };
 
-  const { totalProducts } = useCart();
+  const { productsInTheCart } = useCart();
 
   return (
     <HeaderWrapper>
@@ -56,7 +56,7 @@ export function Header() {
           <Link href="/cart">
             <ButtonCart
               aria-label=" ir para o carrinho"
-              data-total-products={totalProducts}
+              data-total-products={productsInTheCart.length}
             >
               <Image src={iconCart} alt="icone de carrinho" />
             </ButtonCart>
