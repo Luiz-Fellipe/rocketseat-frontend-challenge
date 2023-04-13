@@ -34,7 +34,7 @@ export const CartContentHeader = styled.div`
   top: 0;
   z-index: 2;
 
-  padding: ${({ theme }) => theme.space["24"]} 0;
+  padding: ${({ theme }) => theme.space["16"]} 0;
 
   background-color: ${({ theme }) => theme.colors.background};
 
@@ -60,6 +60,7 @@ export const CartContentHeader = styled.div`
 
   @media ${({ theme }) => theme.device.sm} {
     position: relative;
+    padding: ${({ theme }) => theme.space["24"]} 0;
   }
 `;
 
@@ -137,6 +138,11 @@ export const ItemInfoHeader = styled.div`
   > button {
     all: unset;
     cursor: pointer;
+
+    &:focus-visible {
+      outline: 2px solid ${({ theme }) => theme.colors["orangeLow"]};
+      outline-offset: ${({ theme }) => theme.space["4"]};
+    }
   }
 `;
 
@@ -212,6 +218,11 @@ export const OrderResume = styled.div`
       opacity: 0.5;
       cursor: not-allowed;
     }
+
+    &:focus-visible {
+      outline: 2px solid ${({ theme }) => theme.colors.green};
+      outline-offset: ${({ theme }) => theme.space["4"]};
+    }
   }
 `;
 
@@ -251,5 +262,10 @@ export const OrderSumaryLinks = styled.div`
     line-height: 21px;
     font-weight: 500;
     color: ${({ theme }) => theme.colors.text};
+
+    &:focus-visible {
+      outline: 2px solid ${({ theme }) => theme.colors["orangeLow"]};
+      outline-offset: ${({ theme }) => theme.space["4"]};
+    }
   }
 `;

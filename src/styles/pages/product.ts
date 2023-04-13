@@ -96,6 +96,11 @@ export const ProductInfo = styled.div`
       margin-top: auto;
       margin-bottom: 0;
     }
+
+    &:focus-visible {
+      outline: 2px solid ${({ theme }) => theme.colors.blue};
+      outline-offset: ${({ theme }) => theme.space["8"]};
+    }
   }
 
   @media ${({ theme }) => theme.device.sm} {

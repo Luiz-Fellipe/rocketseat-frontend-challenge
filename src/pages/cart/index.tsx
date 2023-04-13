@@ -29,6 +29,7 @@ import {
   OrderSumaryLinks,
   OrderSummary,
 } from "../../styles/pages/cart";
+import Head from "next/head";
 
 export default function Cart() {
   const {
@@ -41,6 +42,9 @@ export default function Cart() {
 
   return (
     <CartWrapper>
+      <Head>
+        <title>Capputeeno - Carrinho ({productsInTheCart.length})</title>
+      </Head>
       <ButtonBackToHome />
 
       <CartContainer>

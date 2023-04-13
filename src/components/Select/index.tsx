@@ -29,7 +29,7 @@ export function Select({
 }: Pick<SelectProps, "defaultValue" | "onValueChange">) {
   return (
     <Root defaultValue={defaultValue} onValueChange={onValueChange}>
-      <SelectTrigger>
+      <SelectTrigger aria-label="selecione uma opção">
         <Value />
         <SelectIcon>
           <Image

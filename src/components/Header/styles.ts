@@ -61,6 +61,10 @@ export const SearchInput = styled.div`
   padding-left: ${({ theme }) => theme.space["16"]};
   padding-right: ${({ theme }) => theme.space["16"]};
 
+  &:has(input:focus-visible) {
+    outline: 2px solid ${({ theme }) => theme.colors["orangeLow"]};
+  }
+
   > input {
     all: unset;
     width: 100%;
@@ -76,6 +80,11 @@ export const ButtonCart = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
+
+  &:focus-visible {
+    outline: 2px solid ${({ theme }) => theme.colors["orangeLow"]};
+    ${({ theme }) => theme.space["8"]};
+  }
 
   &::after {
     content: attr(data-total-products);

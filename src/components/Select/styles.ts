@@ -29,6 +29,11 @@ export const SelectTrigger = styled(Trigger)`
   font-size: ${({ theme }) => theme.fontSizes["16"]};
   font-weight: 400;
   color: ${({ theme }) => theme.colors.text};
+
+  &:focus-visible {
+    outline: 2px solid ${({ theme }) => theme.colors["orangeLow"]};
+    outline-offset: ${({ theme }) => theme.space["4"]};
+  }
 `;
 
 export const SelectIcon = styled(Icon)`

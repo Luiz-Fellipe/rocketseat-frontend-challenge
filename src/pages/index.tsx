@@ -1,3 +1,4 @@
+import Head from "next/head";
 import type { GetServerSideProps, NextPage } from "next";
 
 //components
@@ -38,6 +39,9 @@ export default function Home({ products, totalProducts }: IHomeProps) {
 
   return (
     <HomeWrapper>
+      <Head>
+        <title>Capputeeno</title>
+      </Head>
       <HomeHeader>
         <ProductCategory />
         <OrderByDropdown />

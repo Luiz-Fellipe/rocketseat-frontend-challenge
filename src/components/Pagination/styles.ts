@@ -50,4 +50,8 @@ export const ButtonPage = styled.button<IButtonPageProps>`
     opacity: 0.5;
     cursor: not-allowed;
   }
+
+  &:focus-visible {
+    outline: 2px solid ${({ theme }) => theme.colors["orangeLow"]};
+  }
 `;

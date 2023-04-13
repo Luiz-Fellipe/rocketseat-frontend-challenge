@@ -31,6 +31,11 @@ export const CategoryItem = styled.button<ICategoryItemProps>`
       border-bottom: 4px solid ${({ theme }) => theme.colors.orangeLow};
     `}
 
+  &:focus {
+    outline: 2px solid ${({ theme }) => theme.colors["orangeLow"]};
+    outline-offset: ${({ theme }) => theme.space["8"]};
+  }
+
   @media ${({ theme }) => theme.device.sm} {
     font-size: ${({ theme }) => theme.fontSizes["16"]};
   }

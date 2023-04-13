@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-export const ProductCardWrapper = styled.div`
+export const ProductCardWrapper = styled.button`
+  all: unset;
   width: 300px;
 
   display: flex;
@@ -10,6 +11,11 @@ export const ProductCardWrapper = styled.div`
 
   background-color: ${({ theme }) => theme.colors.shape01};
   border-radius: ${({ theme }) => theme.radii[8]};
+
+  &:focus-visible {
+    outline: 2px solid ${({ theme }) => theme.colors["orangeLow"]};
+    outline-offset: ${({ theme }) => theme.space["8"]};
+  }
 
   > strong,
   span {

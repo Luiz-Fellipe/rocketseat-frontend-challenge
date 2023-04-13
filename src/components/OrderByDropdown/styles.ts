@@ -31,6 +31,11 @@ export const DropdownMenuTrigger = styled(Trigger)`
   @media ${({ theme }) => theme.device.sm} {
     margin-top: 0;
   }
+
+  &:focus-visible {
+    outline: 2px solid ${({ theme }) => theme.colors["orangeLow"]};
+    outline-offset: ${({ theme }) => theme.space["8"]};
+  }
 `;
 
 export const DropdownMenuItem = styled(Item)`

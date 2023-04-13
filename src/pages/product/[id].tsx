@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
+import Head from "next/head";
 
 //assets
 import IconCartWhite from "../../assets/iconCartWhite.svg";
@@ -30,6 +31,10 @@ export default function Product({ product }: { product: IProduct }) {
 
   return (
     <ProductWrapper>
+      <Head>
+        <title>Capputeeno - {product.name}</title>
+      </Head>
+
       <ButtonBackToHome />
 
       <ProductContent>
