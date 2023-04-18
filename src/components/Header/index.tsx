@@ -50,6 +50,7 @@ export function Header() {
               defaultValue={router.query?.search}
               type="text"
               placeholder="Procurando por algo específico?"
+              data-testid="search-input"
             />
             <Image src={iconSearch} alt="icone de pesquisa" />
           </SearchInput>

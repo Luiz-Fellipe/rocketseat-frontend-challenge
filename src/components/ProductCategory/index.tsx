@@ -43,6 +43,7 @@ export function ProductCategory() {
       {Object.entries(ICategoryTypes)?.map(([key, value]) => (
         <CategoryItem
           isActive={key === activeCategory}
+          data-testid={key}
           key={key}
           onClick={() => handleSetCategory(key as ICategoryTypesKeys)}
         >

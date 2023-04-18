@@ -29,7 +29,10 @@ export function Select({
 }: Pick<SelectProps, "defaultValue" | "onValueChange">) {
   return (
     <Root defaultValue={defaultValue} onValueChange={onValueChange}>
-      <SelectTrigger aria-label="selecione uma opção">
+      <SelectTrigger
+        data-testid="select-radix"
+        aria-label="selecione uma opção"
+      >
         <Value />
         <SelectIcon>
           <Image
@@ -48,7 +51,11 @@ export function Select({
 
           <SelectViewport>
             {Array.from({ length: 120 }, (v, k) => k).map((item) => (
-              <SelectItem key={item} value={(item + 1).toString()}>
+              <SelectItem
+                data-testid={`select-option-${item + 1}`}
+                key={item}
+                value={(item + 1).toString()}
+              >
                 <SelectItemText>{item + 1} </SelectItemText>
               </SelectItem>
             ))}

@@ -10,7 +10,7 @@ import { ButtonBack } from "./styles";
 export function ButtonBackToHome() {
   return (
     <Link href="/">
-      <ButtonBack>
+      <ButtonBack data-testid="button-back">
         <Image src={IconBack} alt="voltar a página anterior"></Image>
         Voltar
       </ButtonBack>

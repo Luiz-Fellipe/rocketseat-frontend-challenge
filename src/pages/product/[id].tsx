@@ -58,7 +58,10 @@ export default function Product({ product }: { product: IProduct }) {
 
           <p>{product.description}</p>
 
-          <button onClick={() => addProductToCart(product)}>
+          <button
+            data-testid="button-add-cart"
+            onClick={() => addProductToCart(product)}
+          >
             <Image src={IconCartWhite} alt="adicionar carrinho" />
             Adicionar ao carrinho
           </button>

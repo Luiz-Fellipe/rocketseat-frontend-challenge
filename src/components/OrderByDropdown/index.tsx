@@ -51,7 +51,7 @@ export function OrderByDropdown() {
 
   return (
     <Root>
-      <DropdownMenuTrigger>
+      <DropdownMenuTrigger data-testid="order-by-dropdown">
         Organizar por {value ? IOrderTypes[value] : null}
         <Image src={IconArrowSvg} alt="icone de seta" />
       </DropdownMenuTrigger>
@@ -59,6 +59,7 @@ export function OrderByDropdown() {
         {Object.entries(IOrderTypes)?.map(([key, value]) => (
           <DropdownMenuItem
             key={key}
+            data-testid={`order-by-${key}`}
             onSelect={() => handleSetOrderBy(key as IOrderTypesKeys)}
           >
             {value}

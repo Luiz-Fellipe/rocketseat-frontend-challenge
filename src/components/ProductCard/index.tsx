@@ -10,11 +10,11 @@ import { formatMoney } from "../../utils/formatMoney";
 //styles
 import { ProductCardWrapper } from "./styles";
 
-interface IProductCardProps {
+interface IProductCardProps extends React.ComponentPropsWithRef<"button"> {
   product: Pick<IProduct, "id" | "name" | "price_in_cents" | "image_url">;
 }
 
-export function ProductCard({ product }: IProductCardProps) {
+export function ProductCard({ product, ...rest }: IProductCardProps) {
   const router = useRouter();
 
   function handleNavigateToProductDetail() {
@@ -22,7 +22,12 @@ export function ProductCard({ product }: IProductCardProps) {
   }
 
   return (
-    <ProductCardWrapper onClick={handleNavigateToProductDetail} role="button">
+    <ProductCardWrapper
+      onClick={handleNavigateToProductDetail}
+      role="button"
+      data-testid="product-card"
+      {...rest}
+    >
       <Image
         src={product.image_url}
         width={640}
@@ -34,9 +39,11 @@ export function ProductCard({ product }: IProductCardProps) {
         }}
         alt={product.name}
       />
-      <span>{product.name}</span>
+      <span data-testid="product-card-name">{product.name}</span>
 
-      <strong>{formatMoney(product.price_in_cents / 100)}</strong>
+      <strong data-testid="product-card-price">
+        {formatMoney(product.price_in_cents / 100)}
+      </strong>
     </ProductCardWrapper>
   );
 }

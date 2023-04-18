@@ -31,10 +31,11 @@ export function Pagination({ totalPages }: IPaginationProps) {
   }
 
   return (
-    <PagesWrapper>
+    <PagesWrapper data-testid="pagination">
       {pages.map((page) => (
         <ButtonPage
           isActive={page === currentPage}
+          data-testid="pagination-button"
           key={page}
           onClick={() => handleChangePage(page)}
         >
@@ -45,12 +46,14 @@ export function Pagination({ totalPages }: IPaginationProps) {
       <div>
         <ButtonPage
           disabled={currentPage === 1}
+          data-testid="pagination-button-prev"
           onClick={() => handleChangePage(currentPage - 1)}
         >
           <Image src={IconArrowLeft} alt="Página anterior" />
         </ButtonPage>
         <ButtonPage
           disabled={currentPage === pages.length}
+          data-testid="pagination-button-next"
           onClick={() => handleChangePage(currentPage + 1)}
         >
           <Image src={IconArrowRight} alt="Próxima Página" />

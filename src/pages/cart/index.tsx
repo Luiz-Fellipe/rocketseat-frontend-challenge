@@ -51,7 +51,7 @@ export default function Cart() {
         <CartContent>
           <CartContentHeader>
             <h1>Seu Carrinho</h1>
-            <span>
+            <span data-testid="cart-total-products">
               Total ({totalProducts} produtos){" "}
               <strong>{formatMoney(subTotalPrice)}</strong>
             </span>
@@ -59,7 +59,7 @@ export default function Cart() {
 
           <CartItemsList>
             {productsInTheCart.map((product) => (
-              <CartItem key={product.id}>
+              <CartItem data-testid="cart-item" key={product.id}>
                 <Image
                   src={product.image_url}
                   alt={product.name}
@@ -71,6 +71,7 @@ export default function Cart() {
                   <ItemInfoHeader>
                     <h2>{product.name}</h2>
                     <button
+                      data-testid="button-remove-product"
                       onClick={() => removeProductToCart(product.id)}
                       aria-label="deletar o item do carrinho"
                     >
@@ -81,13 +82,14 @@ export default function Cart() {
                   <p>{product.description}</p>
                   <ItemInfoFooter>
                     <Select
+                      data-testid="select-product-quantity"
                       defaultValue={product.amount.toString()}
                       onValueChange={(value) =>
                         updateProductAmount(product.id, Number(value))
                       }
                     />
 
-                    <strong>
+                    <strong data-testid="cart-item-price">
                       {formatMoney(
                         (product.price_in_cents / 100) * product.amount
                       )}
@@ -113,7 +115,9 @@ export default function Cart() {
 
             <OrderPrice>
               <strong>Total</strong>
-              <strong>{formatMoney(subTotalPrice)}</strong>
+              <strong data-testid="cart-total-price">
+                {formatMoney(subTotalPrice)}
+              </strong>
             </OrderPrice>
 
             <button disabled={productsInTheCart.length === 0}>
