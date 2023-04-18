@@ -38,6 +38,7 @@ export default function Cart() {
     subTotalPrice,
     removeProductToCart,
     updateProductAmount,
+    productsCheckout,
   } = useCart();
 
   return (
@@ -120,7 +121,10 @@ export default function Cart() {
               </strong>
             </OrderPrice>
 
-            <button disabled={productsInTheCart.length === 0}>
+            <button
+              onClick={productsCheckout}
+              disabled={productsInTheCart.length === 0}
+            >
               Finalizar Compra
             </button>
           </OrderResume>

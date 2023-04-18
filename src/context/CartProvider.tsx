@@ -99,6 +99,11 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     });
   }
 
+  function productsCheckout() {
+    setProductsInTheCart([]);
+    localStorage.removeItem("cappucino-cart");
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -108,6 +113,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
         addProductToCart,
         removeProductToCart,
         updateProductAmount,
+        productsCheckout,
       }}
     >
       {children}

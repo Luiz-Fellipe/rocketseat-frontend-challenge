@@ -94,4 +94,26 @@ describe("Purchase E2E", () => {
       cy.get("button").contains("Finalizar Compra").should("be.disabled");
     });
   });
+
+  describe("Checkout Flow", () => {
+    it("products checkout", () => {
+      cy.clearLocalStorage().should(() => {
+        expect(localStorage.getItem("cappucino-cart")).to.be.null;
+      });
+      cy.visit("/");
+      cy.get('[data-testid="product-card"]').first().click();
+
+      cy.get('[data-testid="button-add-cart"]')
+        .click()
+        .should(() => {
+          expect(localStorage.getItem("cappucino-cart")).to.be.not.null;
+        });
+
+      cy.visit("/cart");
+
+      cy.get("button").contains("Finalizar Compra").click();
+
+      cy.get('[data-testid="cart-item"]').should("not.exist");
+    });
+  });
 });

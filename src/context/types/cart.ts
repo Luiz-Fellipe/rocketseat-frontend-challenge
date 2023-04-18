@@ -11,4 +11,5 @@ export interface ICartContextParams {
   addProductToCart: (product: IProduct) => void;
   updateProductAmount: (productId: IProduct["id"], amount: number) => void;
   removeProductToCart: (productId: IProduct["id"]) => void;
+  productsCheckout: () => void;
 }
