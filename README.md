@@ -69,7 +69,7 @@ To run the project:
   - `yarn` or `npm install` -> To install all dependencies;
   - `yarn start` or `npm run start` -> To run the api's mocks;
 <br>
-<br>
+
 - Open the project root folder in the terminal and run:
   - `yarn` or `npm install` -> To install all dependencies;
   - `yarn dev` or `npm run dev` -> To run the project;
