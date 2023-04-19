@@ -48,6 +48,7 @@ This project was developed with the following technologies:
 - <a target="_blank" href="https://reactjs.org/">React 18.0</a>
 - <a target="_blank" href="https://nextjs.org/">NextJs 12.2</a>
 - <a target="_blank" href="https://graphql.org/">GraphQL</a>
+- <a target="_blank" href="https://www.cypress.io/">Cypress</a>
 - <a target="_blank" href="https://styled-components.com/">Styled Components</a>
 - <a target="_blank" href="https://www.typescriptlang.org/">TypeScript 4.5.4</a>
 - <a target="_blank" href="https://www.radix-ui.com/">Radix-UI</a>
@@ -59,8 +60,6 @@ This project was developed with the following technologies:
 
 To run the project:
 
-
-
 - First we have to:
   - Clone the project by running this command in the terminal `git clone <repo_url>`;
       <br>
@@ -68,11 +67,20 @@ To run the project:
 - Open the project folder `api` in the terminal and run:
   - `yarn` or `npm install` -> To install all dependencies;
   - `yarn start` or `npm run start` -> To run the api's mocks;
+
 <br>
 
 - Open the project root folder in the terminal and run:
   - `yarn` or `npm install` -> To install all dependencies;
   - `yarn dev` or `npm run dev` -> To run the project;
+
+<br>
+  To run E2E tests:
+
+<br>
+
+- Open the project root folder in the terminal and run:
+  - `npx cypress open` -> To execute cypress CLI;
 
 <br><br>
 
