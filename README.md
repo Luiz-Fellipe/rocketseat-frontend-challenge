@@ -48,6 +48,7 @@ This project was developed with the following technologies:
 - <a target="_blank" href="https://reactjs.org/">React 18.0</a>
 - <a target="_blank" href="https://nextjs.org/">NextJs 12.2</a>
 - <a target="_blank" href="https://graphql.org/">GraphQL</a>
+- <a target="_blank" href="https://www.cypress.io/">Cypress</a>
 - <a target="_blank" href="https://styled-components.com/">Styled Components</a>
 - <a target="_blank" href="https://www.typescriptlang.org/">TypeScript 4.5.4</a>
 - <a target="_blank" href="https://www.radix-ui.com/">Radix-UI</a>
