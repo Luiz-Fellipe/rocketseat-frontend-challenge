@@ -60,8 +60,6 @@ This project was developed with the following technologies:
 
 To run the project:
 
-
-
 - First we have to:
   - Clone the project by running this command in the terminal `git clone <repo_url>`;
       <br>
@@ -69,11 +67,20 @@ To run the project:
 - Open the project folder `api` in the terminal and run:
   - `yarn` or `npm install` -> To install all dependencies;
   - `yarn start` or `npm run start` -> To run the api's mocks;
+
 <br>
-<br>
+
 - Open the project root folder in the terminal and run:
   - `yarn` or `npm install` -> To install all dependencies;
   - `yarn dev` or `npm run dev` -> To run the project;
+
+<br>
+  To run E2E tests:
+
+<br>
+
+- Open the project root folder in the terminal and run:
+  - `npx cypress open` -> To execute cypress CLI;
 
 <br><br>
 
