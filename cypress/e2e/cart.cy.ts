@@ -7,7 +7,28 @@ describe("Purchase E2E", () => {
     afterEach(() => {
       cy.SaveLocalStorage();
     });
-    it("should add products in the cart", () => {
+
+    it("must increase the quantity of the product in the cart if it already exists in the cart", () => {
+      cy.clearLocalStorage().should(() => {
+        expect(localStorage.getItem("cappucino-cart")).to.be.null;
+      });
+
+      cy.visit("/");
+      cy.get('[data-testid="product-card"]').first().click();
+
+      cy.get('[data-testid="button-add-cart"]').click();
+      cy.get('[data-testid="button-add-cart"]').click();
+
+      cy.visit("/cart");
+
+      cy.get('[data-testid="cart-item"]').should("have.length.greaterThan", 0);
+
+      cy.get('[data-testid="cart-total-products"]').contains(
+        "Total (2 produtos)"
+      );
+    });
+
+    it("should adds the product for the first time to the cart", () => {
       cy.clearLocalStorage().should(() => {
         expect(localStorage.getItem("cappucino-cart")).to.be.null;
       });

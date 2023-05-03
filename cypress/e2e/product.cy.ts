@@ -7,15 +7,12 @@ describe("Product E2E", () => {
     });
 
     describe("Product filter", () => {
-      it("should display the products and pagination", () => {
+      it("should display the products", () => {
         // Check if the products are displayed
         cy.get('[data-testid="product-card"]').should(
           "have.length.greaterThan",
           0
         );
-
-        // Check if the pagination is displayed
-        cy.get('[data-testid="pagination"]').should("exist");
       });
 
       it("should change the order of the products", () => {
@@ -89,6 +86,29 @@ describe("Product E2E", () => {
 
         // Check if the results not found message is displayed
         cy.get('[data-testid="results-not-found"]').should("exist");
+      });
+    });
+
+    describe("Product Pagination", () => {
+      it("should display pagination", () => {
+        // Check if the pagination is displayed
+        cy.get('[data-testid="pagination"]').should("exist");
+      });
+      it("should change the page", () => {
+        // Check if the pagination is displayed
+        cy.get('[data-testid="pagination"]').should("exist");
+
+        // Click on the second page button
+        cy.get('[data-testid="page-2"]').first().click();
+
+        // Wait for the page to load
+        cy.wait(1000);
+
+        cy.url().should("include", "page=2");
+
+        cy.get(' [data-testid="product-card-name"]')
+          .filter(':contains("Camiseta not today.")')
+          .should("have.length.gte", 1);
       });
     });
 

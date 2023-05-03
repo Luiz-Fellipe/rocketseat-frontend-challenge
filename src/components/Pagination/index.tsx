@@ -35,7 +35,7 @@ export function Pagination({ totalPages }: IPaginationProps) {
       {pages.map((page) => (
         <ButtonPage
           isActive={page === currentPage}
-          data-testid="pagination-button"
+          data-testid={`page-${page}`}
           key={page}
           onClick={() => handleChangePage(page)}
         >
